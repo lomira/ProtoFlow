@@ -37,13 +37,15 @@ def parse_buffer(buffer: bytes, prefix: bytes) -> Tuple[List[bytes], bytes]:
         varint_start = prefix_length + 1
         try:
             message_length, varint_length = decode_varint(buffer[varint_start:])
-            print(message_length)
         except ValueError:
             # Varint incomplet, on attend plus de données.
             return messages, buffer
 
-        total_header_length = prefix_length + varint_length
+        total_header_length = prefix_length + varint_length + 1
         total_message_length = total_header_length + message_length
+        print(
+            "Buffer length:", len(buffer), "Total message length:", total_message_length
+        )
 
         if len(buffer) < total_message_length:
             # Message incomplet, on retourne le buffer pour attendre plus de données.

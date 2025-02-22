@@ -8,6 +8,7 @@ def get_message(
     file_path: Optional[str] = None,
     port: int = 5555,
     interface: Optional[str] = None,
+    check_interval: Optional[float] = 0.1,
     timeout: Optional[int] = None,
 ) -> bytes:
     """
@@ -22,6 +23,6 @@ def get_message(
     :return: Le contenu du message complet (message_data) en bytes.
     """
     if file_path is None:
-        return sniff_for_message(prefix, port, interface, timeout)
+        return sniff_for_message(prefix, port, interface, check_interval, timeout)
     else:
         return read_message_from_pcap_file(file_path, prefix)

@@ -174,3 +174,4 @@ cython_debug/
 # Project custom
 *.pcap
 *.pcanpg
+custom_implementation.py

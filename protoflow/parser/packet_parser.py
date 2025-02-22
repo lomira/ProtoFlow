@@ -1,5 +1,3 @@
-# protoflow/parser/packet_parser.py
-
 from typing import Tuple, List
 from protoflow.utils.helpers import decode_varint
 
